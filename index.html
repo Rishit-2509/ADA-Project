@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plagiarism Checker</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Plagiarism Checker</h1>
+    <p class="subtitle">Analyzes documents up to 5,000 words securely</p>
+  </header>
+
+  <main>
+
+    <div class="section-label">01 — Upload Documents</div>
+
+    <div class="upload-area" id="dropZone">
+      <input type="file" id="fileInput" multiple accept=".txt,.md,.html,.csv" />
+      <h3>Drop files here or click to browse</h3>
+      <p>Document similarity detection</p>
+    </div>
+
+    <div class="file-chips" id="fileChips"></div>
+
+    <div class="paste-toggle" onclick="togglePaste()">
+      <span>+ Paste text manually</span> instead
+    </div>
+
+    <div class="paste-block" id="pasteBlock">
+      <h4>Paste Document Text</h4>
+      <div class="paste-row">
+        <textarea id="pasteArea" placeholder="Paste a document's text here…" rows="4"></textarea>
+        <button class="btn-add-paste" onclick="addPastedDoc()">Add Doc</button>
+      </div>
+      <p style="color:var(--muted);font-size:.8rem;">
+        Each click of "Add Doc" adds one document to the list above.
+      </p>
+    </div>
+
+    <button class="btn-analyse" id="analyseBtn" disabled onclick="runAnalysis()">
+      <span class="btn-text">Analyse Documents</span>
+      <div class="spinner"></div>
+    </button>
+
+    <div id="results" class="hidden">
+      <div class="results-header">
+        <div class="section-label" style="margin:0">02 — Results</div>
+        <div class="exec-badge" id="execBadge">Execution Time: <strong>—</strong></div>
+      </div>
+      <div id="pairResults"></div>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+
+</body>
+</html>
